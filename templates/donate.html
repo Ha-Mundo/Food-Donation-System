@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>Donate Food Page</h1>
+    <form action="/food_donation" method='post', class='ui form' style='width: 50%;'>
+        Name:<br>
+        <input type="text" name="name">
+
+        <br>
+        Age:<br>
+        <input type="text" name="age">
+        <br>
+         Expiry:<br>
+        <input type="text" name="expiry">
+        <br>
+         Food Type:<br>
+            <select name="food_types" method="GET" action="/">
+                <option value="{{ food_types[0]}}" selected>{{ food_types[0]}}</option>
+                {% for  food_type in  food_types[1:] %}
+                <option value="{{ food_type}}">{{ food_type}}</option>
+                {% endfor %}
+            </select>
+        <br>
+         City:<br>
+        <input type="text" name="city">
+        <br>
+         Phone Number:<br>
+        <input type="text" name="phone_no">
+        <br>
+         Quantity:<br>
+        <input type="text" name="quantity">
+        <br>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>     
+</div>
+{% endblock %}

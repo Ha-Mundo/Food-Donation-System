@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>Find Food Page</h1>
+    <form action="/food_receive" method='post', class='ui form' style='width: 50%;'>
+        Food Type:<br>
+        <select name="food_types" method="GET" action="/">
+            <option value="{{ food_types[0]}}" selected>{{ food_types[0]}}</option>
+            {% for  food_type in  food_types[1:] %}
+            <option value="{{ food_type}}">{{ food_type}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        City:<br>
+        <input type="text" name="city">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>     
+</div>
+{% endblock %}

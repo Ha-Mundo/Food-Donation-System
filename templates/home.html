@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <form action="/home" method='post', class='ui form' style='width: 50%;'>
+        <html>
+            <body>
+                <h2>Home page</h2>
+                <a href='/food_donation'> 
+                    <h3>Food donation</h3>
+                </a>
+                <a href='/food_receive'> 
+                    <h3>Food receive</h3>
+                </a>
+            </body>
+        </html>
+    </form>     
+</div>
+{% endblock %}
