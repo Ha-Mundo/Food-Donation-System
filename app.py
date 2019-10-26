@@ -12,7 +12,7 @@ from sqlalchemy.orm import sessionmaker
 
 file_name = 'FoodDonation.db'
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///{file_name}"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{file_name}"
 db = SQLAlchemy(app)
 
 class FoodDonation(db.Model):
@@ -20,8 +20,8 @@ class FoodDonation(db.Model):
     name = db.Column(db.String)
     food_type = db.Column(db.String)
     quantity = db.Column(db.Integer)
-    age = db.Column(db.Integer)
-    expiry = db.Column(db.Integer)
+    age = db.Column(db.String)
+    expiry = db.Column(db.String)
     city = db.Column(db.String)
     phone_no = db.Column(db.String)
 
@@ -37,16 +37,16 @@ def food_donation():
     else:
         data_fields = ['name','food_type','quantity','age','expiry','city','phone_no']
     
-    data_dict = {}
-   
-    for field in data_fields:
-        data_dict[field] = request.form.get(field).lower()
+        data_dict = {}
+        
+        for field in data_fields:
+            data_dict[field] = request.form.get(field).lower()
+        
+        food_donation = FoodDonation(**data_dict)
+        db.session.add(food_donation)
+        db.session.commit()
 
-    food_donation = FoodDonation(**data_dict)
-    db.session.add(food_donation)
-    db.session.commit()
-
-    return redirect(url_for('home'))
+        return redirect(url_for('home'))
     
 @app.route('/food_receive', methods=['GET','POST'])
 def food_receive():

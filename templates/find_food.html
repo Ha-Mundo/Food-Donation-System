@@ -3,8 +3,9 @@
 <div class="container">
     <h1>Find Food Page</h1>
     <form action="/food_receive" method='post', class='ui form' style='width: 50%;'>
+        <br>
         Food Type:<br>
-        <select name="food_types" method="GET" action="/">
+        <select name="food_type">
             <option value="{{ food_types[0]}}" selected>{{ food_types[0]}}</option>
             {% for  food_type in  food_types[1:] %}
             <option value="{{ food_type}}">{{ food_type}}</option>

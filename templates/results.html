@@ -7,39 +7,37 @@
     <table style="width:100% padding-top: 50px" class="ui celled table">
   <tr>
     <th>Name</th>
-    <th>Age</th> 
-    <th>Expiry</th>
     <th>Food Type</th>
+    <th>Quantity</th>
+    <th>Age</th>
+    <th>Expiry</th>
     <th>City</th> 
     <th>Phone Number</th>
-    <th>Quantity</th>
     <th>Take Out</th>
-
   </tr>
-  
-
-    {% for food_donation in food_donations %}
-                <tr>
-                    <td>{{ food_donation.name }}</td>
-                    <td>{{ food_donation.age }} day</td>
-                    <td>{{ food_donation.expiry }} day</td>
-                    <td>{{ food_donation.food_type }}</td>
-                    <td>{{ food_donation.city }}</td>
-                    <td>
-                        <a href="tel:{{ food_donation.phone_no }}">
-                            {{ food_donation.phone_no }}
-                        </a>
-                    </td>
-                    <td>{{ food_donation.quantity }} KG</td>
-                    <td><a href="/delete_food?id={{ food_donation.id }}">
-                            <button class="ui button">
-                                Take Out
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-    {% endfor %}
+        {% for food_donation in food_donations %}
+                    <tr>
+                        <td>{{ food_donation.name }}</td>
+                        <td>{{ food_donation.food_type }} day</td>
+                        <td>{{ food_donation.quantity }} KG</td>
+                        <td>{{ food_donation.age }}</td>
+                        <td>{{ food_donation.expiry }}</td>
+                        <th>{{ food_donation.city }}</th> 
+                        <td>
+                            <a href="tel:{{ food_donation.phone_no }}">
+                                {{ food_donation.phone_no }}
+                            </a>
+                        </td>
+                        
+                        <td>
+                            <a href="/delete_food?id={{ food_donation.id }}">
+                                <button class="ui button">
+                                    Take Out
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+        {% endfor %}
     </table>
-
 </div>
 {% endblock %}
